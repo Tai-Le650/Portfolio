@@ -2,20 +2,17 @@ import type { Education } from "@/types";
 
 export const education: Education[] = [
   {
-    degree: "B.S. Computer Science",
-    school: "{{University Name}}",
-    location: "{{City, State}}",
+    degree: "B.S. in Computer Science and Engineering",
+    school: "University of California, Merced",
+    location: "Merced, CA",
     startDate: "2022-08",
-    endDate: "2026-05",
-    gpa: "{{3.X / 4.0}}",
+    endDate: "2026-12",
     coursework: [
-      "Data Structures & Algorithms",
-      "Operating Systems",
-      "Computer Networks",
-      "Databases",
-      "Machine Learning",
-      "Distributed Systems",
+      "Data Structures",
+      "Computer Organization",
+      "Networks",
+      "Assembly",
+      "Algorithms",
     ],
-    honors: ["{{Dean's List}}", "{{Scholarship name}}"],
   },
 ];

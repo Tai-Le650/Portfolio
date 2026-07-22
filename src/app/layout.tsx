@@ -1,47 +1,45 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { profile } from "@/data/profile";
+import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
-const sans = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-});
-
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-});
-
-const siteName =
-  profile.name === "{{YOUR NAME}}"
-    ? "Portfolio"
-    : `${profile.name} — Portfolio`;
+const siteName = `${profile.name} — ${profile.title}`;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://example.com"), // {{REPLACE with your deployed URL}}
+  metadataBase: new URL(siteUrl),
   title: {
     default: siteName,
-    template: `%s · ${profile.name === "{{YOUR NAME}}" ? "Portfolio" : profile.name}`,
+    template: `%s · ${profile.name}`,
   },
-  description:
-    profile.tagline === "" ? "Personal portfolio" : profile.tagline,
+  description: profile.tagline,
+  applicationName: `${profile.name} Portfolio`,
+  authors: [{ name: profile.name }],
+  creator: profile.name,
+  keywords: [
+    "Full-stack developer",
+    "AI engineering",
+    "simulation",
+    "Next.js",
+    "Godot",
+    profile.name,
+  ],
   openGraph: {
     title: siteName,
     description: profile.tagline,
+    siteName: `${profile.name} Portfolio`,
     type: "website",
-    images: ["/og-image.png"],
+    locale: "en_US",
+    images: [{ url: "/og.png", width: 1731, height: 909, alt: siteName }],
   },
   twitter: {
     card: "summary_large_image",
     title: siteName,
     description: profile.tagline,
+    images: ["/og.png"],
   },
 };
 
@@ -51,12 +49,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${sans.variable} ${mono.variable}`}
-    >
-      <body className="flex min-h-dvh flex-col font-sans">
+    <html lang="en" suppressHydrationWarning>
+      <body className="flex min-h-dvh flex-col overflow-x-hidden font-sans">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -65,16 +59,16 @@ export default function RootLayout({
         >
           <a
             href="#main"
-            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:shadow-md"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-sm focus:border focus:border-foreground focus:bg-background focus:px-4 focus:py-3 focus:font-mono focus:text-xs focus:font-semibold focus:uppercase focus:tracking-[0.08em] focus:text-foreground"
           >
             Skip to content
           </a>
           <Navbar />
-          <main id="main" className="flex-1">
+          <main id="main" tabIndex={-1} className="flex-1 outline-none">
             {children}
           </main>
           <Footer />
-          <Toaster richColors position="bottom-right" />
+          <Toaster position="bottom-right" />
         </ThemeProvider>
       </body>
     </html>

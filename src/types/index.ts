@@ -10,7 +10,8 @@ export type Profile = {
   bio: string;
   location: string;
   email: string;
-  resumeUrl: string;
+  phone?: string;
+  website?: string;
   socials: {
     github: string;
     linkedin: string;
@@ -29,11 +30,15 @@ export type Project = {
   description: string;
   longDescription?: string;
   tech: string[];
-  image: string;
+  image?: {
+    src: string;
+    alt: string;
+  };
   github?: string;
   demo?: string;
   featured?: boolean;
-  date: string;
+  date?: string;
+  comingSoon?: boolean;
   highlights?: string[];
 };
 

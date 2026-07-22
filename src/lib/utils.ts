@@ -18,3 +18,14 @@ export function formatDateRange(start: string, end: string) {
   };
   return `${fmt(start)} — ${fmt(end)}`;
 }
+
+export function formatMonthYear(value: string) {
+  const [year, month] = value.split("-");
+  if (!month) return year;
+
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(Date.UTC(Number(year), Number(month) - 1, 1)));
+}

@@ -2,45 +2,61 @@ import Link from "next/link";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { profile } from "@/data/profile";
 
+const footerLinks = [
+  { href: "/about", label: "About" },
+  { href: "/projects", label: "Projects" },
+  { href: "/experience", label: "Experience" },
+  { href: "/contact", label: "Contact" },
+];
+
 export function Footer() {
   const year = new Date().getFullYear();
-  const displayName =
-    profile.name === "{{YOUR NAME}}" ? "Portfolio" : profile.name;
 
   return (
-    <footer className="border-t border-border">
-      <div className="container mx-auto max-w-5xl py-10">
-        <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
-          <p className="text-sm text-muted-foreground">
-            © {year} {displayName}. Built with Next.js and Tailwind.
-          </p>
-          <div className="flex items-center gap-1">
+    <footer className="mt-8 border-t border-border bg-background">
+      <div className="site-container flex flex-col gap-6 py-8 lg:flex-row lg:items-center lg:justify-between">
+        <p className="font-mono text-xs uppercase tracking-[0.1em] text-muted-foreground">
+          © {year} {profile.name}
+        </p>
+
+        <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-5 gap-y-2">
+          {footerLinks.map((item) => (
             <Link
-              href={`mailto:${profile.email}`}
-              aria-label="Email"
-              className="inline-flex size-11 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              key={item.href}
+              href={item.href}
+              className="focus-ring rounded-sm font-mono text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground transition-colors hover:text-foreground"
             >
-              <Mail className="size-5" />
+              {item.label}
             </Link>
-            <Link
-              href={profile.socials.github}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub"
-              className="inline-flex size-11 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            >
-              <Github className="size-5" />
-            </Link>
-            <Link
-              href={profile.socials.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              className="inline-flex size-11 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            >
-              <Linkedin className="size-5" />
-            </Link>
-          </div>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-2">
+          <a
+            href={profile.socials.github}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub (opens in a new tab)"
+            className="focus-ring grid size-9 place-items-center rounded-sm border border-border bg-background text-muted-foreground transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
+          >
+            <Github className="size-4" aria-hidden="true" />
+          </a>
+          <a
+            href={profile.socials.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn (opens in a new tab)"
+            className="focus-ring grid size-9 place-items-center rounded-sm border border-border bg-background text-muted-foreground transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
+          >
+            <Linkedin className="size-4" aria-hidden="true" />
+          </a>
+          <a
+            href={`mailto:${profile.email}`}
+            aria-label={`Email ${profile.name}`}
+            className="focus-ring grid size-9 place-items-center rounded-sm border border-border bg-background text-muted-foreground transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
+          >
+            <Mail className="size-4" aria-hidden="true" />
+          </a>
         </div>
       </div>
     </footer>

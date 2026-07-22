@@ -4,33 +4,35 @@ import type { Experience } from "@/types";
 
 export function ExperienceItem({ item }: { item: Experience }) {
   return (
-    <article className="grid grid-cols-[110px_1fr] gap-x-6 gap-y-2 sm:grid-cols-[180px_1fr] sm:gap-x-8">
-      <div className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-        {formatDateRange(item.startDate, item.endDate)}
+    <article className="grid gap-5 sm:grid-cols-[160px_1fr] sm:gap-8">
+      <div>
+        <p className="font-mono text-xs font-semibold uppercase tracking-[0.13em] text-accent">
+          {formatDateRange(item.startDate, item.endDate)}
+        </p>
+        {item.location && (
+          <p className="mt-2 text-sm text-muted-foreground">{item.location}</p>
+        )}
       </div>
-      <div className="space-y-3">
-        <div>
-          <h3 className="text-base font-semibold tracking-tight">
-            {item.role}{" "}
-            <span className="text-muted-foreground">· {item.company}</span>
-          </h3>
-          {item.location && (
-            <p className="text-sm text-muted-foreground">{item.location}</p>
-          )}
-        </div>
-        <ul className="space-y-1.5 text-sm leading-relaxed text-muted-foreground">
-          {item.bullets.map((b, i) => (
-            <li key={i} className="flex gap-2">
-              <span className="mt-2 size-1 shrink-0 rounded-full bg-muted-foreground/60" aria-hidden />
-              <span>{b}</span>
+      <div>
+        <h3 className="text-xl font-bold leading-tight tracking-[-0.02em]">
+          {item.role}
+        </h3>
+        <p className="mt-1 text-sm font-semibold text-muted-foreground">
+          {item.company}
+        </p>
+        <ul className="mt-5 space-y-3 text-sm leading-6 text-muted-foreground">
+          {item.bullets.map((bullet) => (
+            <li key={bullet} className="flex gap-3">
+              <span className="mt-2.5 size-1.5 shrink-0 bg-foreground" aria-hidden="true" />
+              <span>{bullet}</span>
             </li>
           ))}
         </ul>
         {item.tech && item.tech.length > 0 && (
-          <div className="flex flex-wrap gap-1.5">
-            {item.tech.map((t) => (
-              <Badge key={t} variant="outline" className="font-mono text-xs">
-                {t}
+          <div className="mt-6 flex flex-wrap gap-2">
+            {item.tech.map((technology) => (
+              <Badge key={technology} variant="outline">
+                {technology}
               </Badge>
             ))}
           </div>

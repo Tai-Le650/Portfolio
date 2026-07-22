@@ -1,17 +1,17 @@
 import type { Profile } from "@/types";
 
 export const profile: Profile = {
-  name: "{{YOUR NAME}}",
-  title: "{{e.g. Software Engineer · Computer Science Graduate}}",
+  name: "Tai Le",
+  title: "Full-stack Developer",
   tagline:
-    "{{One-line pitch. e.g. CS grad who likes systems, distributed infra, and shipping fast. Currently looking for new-grad SWE roles.}}",
-  bio: "{{2–4 sentences. Who you are, what you build, what you're excited about. Mention your degree, key interests (backend, ML, security, etc.), and what you're looking for next.}}",
-  location: "{{City, State}}",
+    "Building full-stack software at the intersection of AI and human experience.",
+  bio: "I’m a Computer Science and Engineering senior at the University of California, Merced, focused on building full-stack products, applied AI experiences, and interactive simulations.\n\nI enjoy taking ideas from an early technical question to a working product—shaping the architecture, building the interface, testing the edges, and making the final experience feel clear to the people using it.",
+  location: "Bay Area, CA",
   email: "taile650@gmail.com",
-  resumeUrl: "/resume.pdf",
+  phone: "650 283 9427",
+  website: "",
   socials: {
-    github: "https://github.com/{{YOUR_GITHUB}}",
-    linkedin: "https://linkedin.com/in/{{YOUR_LINKEDIN}}",
-    // twitter: "https://twitter.com/{{YOUR_HANDLE}}",
+    github: "https://github.com/Tai-Le650",
+    linkedin: "https://www.linkedin.com/in/650-tai-le",
   },
 };

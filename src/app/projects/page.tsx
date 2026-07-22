@@ -1,80 +1,40 @@
-"use client";
-
-import * as React from "react";
-import { SectionHeading } from "@/components/section-heading";
+import type { Metadata } from "next";
+import { PageIntro } from "@/components/page-intro";
 import { ProjectCard } from "@/components/project-card";
-import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
 import { projects } from "@/data/projects";
+import { createPageMetadata } from "@/lib/page-metadata";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Projects",
+  description: "Selected full-stack, AI, and simulation projects by Tai Le.",
+  path: "/projects",
+});
 
 export default function ProjectsPage() {
-  const allTags = React.useMemo(() => {
-    const set = new Set<string>();
-    projects.forEach((p) => p.tech.forEach((t) => set.add(t)));
-    return Array.from(set).sort();
-  }, []);
-
-  const [active, setActive] = React.useState<string | null>(null);
-
-  const filtered = active
-    ? projects.filter((p) => p.tech.includes(active))
-    : projects;
-
   return (
-    <section className="container mx-auto max-w-5xl py-16 md:py-20">
-      <SectionHeading
+    <>
+      <PageIntro
         eyebrow="Projects"
-        title="Things I've built"
-        description="A mix of school work, internship projects, and side experiments."
+        title="Selected projects and work in progress."
+        description="A closer look at my work in full-stack development, applied AI, and interactive simulation. Select a completed project to read the full story."
+        aside={
+          <div className="surface min-w-36 rounded-sm p-5 text-center">
+            <p className="text-3xl font-bold tracking-[-0.04em]">{String(projects.length).padStart(2, "0")}</p>
+            <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+              Projects
+            </p>
+          </div>
+        }
       />
 
-      <div className="mb-10 flex flex-wrap gap-2">
-        <button
-          type="button"
-          onClick={() => setActive(null)}
-          className={cn(
-            "rounded-md border px-3 py-1.5 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-            active === null
-              ? "border-foreground bg-foreground text-background"
-              : "border-border text-muted-foreground hover:text-foreground"
-          )}
-          aria-pressed={active === null}
-        >
-          All
-        </button>
-        {allTags.map((tag) => (
-          <button
-            key={tag}
-            type="button"
-            onClick={() => setActive(tag)}
-            className={cn(
-              "rounded-md border px-3 py-1.5 font-mono text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-              active === tag
-                ? "border-foreground bg-foreground text-background"
-                : "border-border text-muted-foreground hover:text-foreground"
-            )}
-            aria-pressed={active === tag}
-          >
-            {tag}
-          </button>
-        ))}
-      </div>
-
-      {filtered.length === 0 ? (
-        <p className="text-muted-foreground">No projects match this filter.</p>
-      ) : (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((p) => (
-            <ProjectCard key={p.slug} project={p} />
+      <section className="site-container section-space" aria-labelledby="project-grid-heading">
+        <h2 id="project-grid-heading" className="sr-only">Selected projects</h2>
+        <div className="space-y-6">
+          {projects.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
-      )}
-
-      <div className="mt-12 flex flex-wrap gap-2">
-        <Badge variant="outline" className="font-mono text-xs">
-          {projects.length} projects · {allTags.length} technologies
-        </Badge>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

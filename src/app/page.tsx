@@ -1,78 +1,79 @@
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import type { Metadata } from "next";
 import { Hero } from "@/components/hero";
 import { SectionHeading } from "@/components/section-heading";
 import { SkillGroupCard } from "@/components/skill-group";
 import { ProjectCard } from "@/components/project-card";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import { ExperienceItem } from "@/components/experience-item";
 import { skills } from "@/data/skills";
 import { projects } from "@/data/projects";
+import { experience } from "@/data/experience";
+import { profile } from "@/data/profile";
+import { createPageMetadata } from "@/lib/page-metadata";
+
+export const metadata: Metadata = createPageMetadata({
+  title: `${profile.name} — ${profile.title}`,
+  description: profile.tagline,
+  path: "/",
+});
 
 export default function HomePage() {
-  const featured = projects.filter((p) => p.featured).slice(0, 3);
-
   return (
     <>
       <Hero />
-      <Separator />
 
-      <section className="container mx-auto max-w-5xl py-16 md:py-20">
+      <section
+        id="experience"
+        className="site-container section-space"
+        aria-labelledby="home-experience-heading"
+      >
         <SectionHeading
-          eyebrow="01 — Skills"
-          title="Things I work with"
-          description="A snapshot of the languages, frameworks, and tools I use most often."
+          eyebrow="Experience"
+          title="Engineering in a research environment."
+          description="Internship work spanning full-stack development, simulation engineering, AI evaluation, and technical ownership at Lawrence Livermore National Laboratory."
+          titleId="home-experience-heading"
         />
-        <div className="grid gap-10 sm:grid-cols-2">
-          {skills.map((group) => (
-            <SkillGroupCard key={group.category} group={group} />
+        <div className="surface rounded-sm p-6 sm:p-8 lg:p-10">
+          {experience.map((item) => (
+            <ExperienceItem key={`${item.company}-${item.role}`} item={item} />
           ))}
         </div>
       </section>
 
-      <Separator />
-
-      <section className="container mx-auto max-w-5xl py-16 md:py-20">
-        <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+      <section
+        id="projects"
+        className="border-y border-border bg-card/40"
+        aria-labelledby="home-projects-heading"
+      >
+        <div className="site-container section-space">
           <SectionHeading
-            eyebrow="02 — Featured Projects"
-            title="Selected work"
-            description="A few things I'm proud of. See more on the projects page."
-            className="mb-0"
+            eyebrow="Projects"
+            title="Selected work."
+            description="Full-stack products and simulations built around useful, interactive experiences."
+            titleId="home-projects-heading"
           />
-          <Button asChild variant="ghost">
-            <Link href="/projects">
-              All projects <ArrowRight className="size-4" />
-            </Link>
-          </Button>
-        </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {featured.map((p) => (
-            <ProjectCard key={p.slug} project={p} />
-          ))}
+          <div className="space-y-6">
+            {projects.map((project) => (
+              <ProjectCard key={project.slug} project={project} />
+            ))}
+          </div>
         </div>
       </section>
 
-      <Separator />
-
-      <section className="container mx-auto max-w-5xl py-16 md:py-20">
-        <div className="rounded-2xl border border-border bg-card p-10 sm:p-14">
-          <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
-            <div className="max-w-xl space-y-2">
-              <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-                Let's build something.
-              </h2>
-              <p className="text-muted-foreground">
-                Open to new-grad SWE roles, internships, and interesting
-                side-projects. I respond to most emails within 24 hours.
-              </p>
-            </div>
-            <Button asChild size="lg">
-              <Link href="/contact">
-                Get in touch <ArrowRight className="size-4" />
-              </Link>
-            </Button>
-          </div>
+      <section
+        id="skills"
+        className="site-container section-space"
+        aria-labelledby="home-skills-heading"
+      >
+        <SectionHeading
+          eyebrow="Skills & capabilities"
+          title="Tools for building end to end."
+          description="The languages, frameworks, platforms, and interactive technologies I use across product development."
+          titleId="home-skills-heading"
+        />
+        <div className="grid gap-4 sm:grid-cols-2">
+          {skills.map((group, index) => (
+            <SkillGroupCard key={group.category} group={group} index={index} />
+          ))}
         </div>
       </section>
     </>
