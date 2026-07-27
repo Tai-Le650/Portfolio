@@ -34,7 +34,7 @@ export const projects: Project[] = [
     slug: "llnl-capstone",
     title: "LLNL Senior Capstone — AI for STEM Education",
     description:
-      "Senior CS capstone with Dr. Rakestraw at Lawrence Livermore National Laboratory researching how AI can help teach STEM to high-school and undergraduate students.",
+      "Senior CSE capstone with Dr. Rakestraw a seinor scientist at Lawrence Livermore National Laboratory researching how AI can help teach STEM to high-school and undergraduate students.",
     longDescription:
       "Collaborating with Dr. Rakestraw from LLNL for a senior computer science capstone project to research the impact and use of AI in helping educate high school and undergraduate students about STEM topics. The work centers on developing STEM-related games that integrate AI, LLMs, and APIs to help students understand STEM topics more deeply.",
     tech: ["AI/LLMs", "APIs", "Game Development", "STEM Education"],

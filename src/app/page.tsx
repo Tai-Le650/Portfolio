@@ -27,9 +27,7 @@ export default function HomePage() {
         aria-labelledby="home-experience-heading"
       >
         <SectionHeading
-          eyebrow="Experience"
-          title="Engineering in a research environment."
-          description="Internship work spanning full-stack development, simulation engineering, AI evaluation, and technical ownership at Lawrence Livermore National Laboratory."
+          title="Experience"
           titleId="home-experience-heading"
         />
         <div className="surface rounded-sm p-6 sm:p-8 lg:p-10">
@@ -46,9 +44,7 @@ export default function HomePage() {
       >
         <div className="site-container section-space">
           <SectionHeading
-            eyebrow="Projects"
-            title="Selected work."
-            description="Full-stack products and simulations built around useful, interactive experiences."
+            title="Projects"
             titleId="home-projects-heading"
           />
           <div className="space-y-6">
@@ -65,9 +61,7 @@ export default function HomePage() {
         aria-labelledby="home-skills-heading"
       >
         <SectionHeading
-          eyebrow="Skills & capabilities"
-          title="Tools for building end to end."
-          description="The languages, frameworks, platforms, and interactive technologies I use across product development."
+          title="Skills & capabilities"
           titleId="home-skills-heading"
         />
         <div className="grid gap-4 sm:grid-cols-2">

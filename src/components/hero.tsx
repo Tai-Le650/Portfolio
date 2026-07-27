@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 const shortBio =
-  "I’m a Computer Science and Engineering senior at UC Merced, focused on building full-stack products, applied AI experiences, and interactive simulations.";
+  "I’m a Computer Science and Engineering graduate from UC Merced, focused on building full-stack products, applied AI experiences, and interactive simulations.";
 
 export function PortraitPlaceholder({ className }: { className?: string }) {
   return (
@@ -45,7 +45,8 @@ export function Hero() {
             id="home-about-heading"
             className="mt-5 text-4xl font-bold leading-[1.05] tracking-[-0.05em] sm:text-5xl lg:text-6xl"
           >
-            Tai Le <span className="text-muted-foreground">· Full-stack Developer</span>
+            Tai Le
+            <span className="mt-2 block text-muted-foreground">Full-stack Developer</span>
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
             {shortBio}
