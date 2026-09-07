@@ -33,7 +33,7 @@ const projectContext = {
     ],
   },
   "llnl-capstone": {
-    status: "Completed June 2026",
+    status: "In progress",
     role: "Full-stack developer & research collaborator",
     kicker: "Research collaboration",
     facts: [
@@ -173,18 +173,20 @@ export default async function ProjectDetailPage({ params }: Params) {
               </dl>
             </div>
 
-            <div className="surface rounded-sm p-6">
-              <p className="text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground">
-                Technology
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {project.tech.map((technology) => (
-                  <Badge key={technology} variant="outline">
-                    {technology}
-                  </Badge>
-                ))}
+            {project.tech.length > 0 && (
+              <div className="surface rounded-sm p-6">
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground">
+                  Technology
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {project.tech.map((technology) => (
+                    <Badge key={technology} variant="outline">
+                      {technology}
+                    </Badge>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {(project.github || project.demo) && (
               <div className="flex flex-wrap gap-2">

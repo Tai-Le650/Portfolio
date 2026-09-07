@@ -24,7 +24,16 @@ export function ProjectVisual({ project, className, large = false }: ProjectVisu
           alt={project.image.alt}
           fill
           sizes={large ? "(max-width: 1280px) 100vw, 1152px" : "(max-width: 768px) 100vw, 42vw"}
-          className="object-contain grayscale"
+          className={cn(
+            // object-contain, never cover: these are wide UI screenshots, and
+            // cropping them to the card's near-square box clips headings.
+            "object-contain transition-[filter] duration-500 motion-reduce:transition-none",
+            // Detail pages show the screenshot in colour; cards stay monochrome
+            // with the rest of the palette until hovered.
+            large
+              ? ""
+              : "grayscale hover:grayscale-0 group-hover:grayscale-0 group-focus-visible:grayscale-0"
+          )}
         />
       </div>
     );

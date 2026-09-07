@@ -25,7 +25,9 @@ Portfolio content is kept separate from the page components:
 | `src/data/education.ts` | Degree and selected coursework |
 | `src/data/skills.ts` | Curated capability groups |
 
-Project media is configured through optional image metadata in `src/data/projects.ts`. Until screenshots are added, `src/components/project-visual.tsx` renders intentional monochrome placeholders.
+Project media is configured through optional image metadata in `src/data/projects.ts`, pointing at web-ready files in `public/projects/`. When a project has no `image`, `src/components/project-visual.tsx` falls back to an intentional monochrome placeholder.
+
+Project cards render their screenshot cropped and monochrome, restoring colour on hover; project detail pages show the full image in colour.
 
 ## Routes
 
@@ -55,6 +57,8 @@ npm.cmd run lint
 npm.cmd run build
 ```
 
-The deployment URL is resolved from `NEXT_PUBLIC_SITE_URL`, then Vercel’s production URL variables, with localhost used only as the local fallback. Set `NEXT_PUBLIC_SITE_URL` to a custom production domain when deploying elsewhere.
+The deployment URL is resolved from `NEXT_PUBLIC_SITE_URL`, then Vercel’s production URL variables, with localhost used only as the local fallback. See `.env.example`.
+
+Set `NEXT_PUBLIC_SITE_URL` in the host’s environment after the first deploy. If it is missing and Vercel’s system variables are unavailable, `robots.txt`, `sitemap.xml`, and every canonical and Open Graph URL will point at `http://localhost:3000` — the site still renders correctly, but crawlers get unreachable links.
 
 > This workspace is inside OneDrive. If generated build files encounter sync or file-lock issues, pause sync temporarily or run the project from a non-synced development directory.

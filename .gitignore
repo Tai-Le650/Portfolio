@@ -42,3 +42,8 @@ next-env.d.ts
 # IDE
 .vscode/
 .idea/
+
+# Unoptimised source images (~7.5 MB). The web-ready versions derived from
+# these live in public/ and are committed. Remove this line if you'd rather
+# keep the originals in version control.
+/images/

@@ -21,6 +21,10 @@ export const projects: Project[] = [
       "Open-Meteo",
       "GBIF",
     ],
+    image: {
+      src: "/projects/ecosystem-simulator.webp",
+      alt: "EcoBuilder key art: an isometric 3D terrain of rivers, shrubs, and rabbits with species info panels, a planet selector, and two AI helper bots.",
+    },
     featured: true,
     date: "2026-05",
     highlights: [
@@ -34,10 +38,14 @@ export const projects: Project[] = [
     slug: "llnl-capstone",
     title: "LLNL Senior Capstone — AI for STEM Education",
     description:
-      "Senior CSE capstone with Dr. Rakestraw a seinor scientist at Lawrence Livermore National Laboratory researching how AI can help teach STEM to high-school and undergraduate students.",
+      "Senior CSE capstone with Dr. Rakestraw, a senior scientist at Lawrence Livermore National Laboratory, researching how AI can help teach STEM to high-school and undergraduate students.",
     longDescription:
-      "Collaborating with Dr. Rakestraw from LLNL for a senior computer science capstone project to research the impact and use of AI in helping educate high school and undergraduate students about STEM topics. The work centers on developing STEM-related games that integrate AI, LLMs, and APIs to help students understand STEM topics more deeply.",
+      "Collaborating with Dr. Rakestraw at LLNL on a senior computer science capstone project researching the impact and use of AI in helping educate high-school and undergraduate students about STEM topics. The work centers on developing STEM-related games and tools that integrate AI, LLMs, and APIs to help students understand those topics more deeply.",
     tech: ["AI/LLMs", "APIs", "Game Development", "STEM Education"],
+    image: {
+      src: "/projects/knowledge-with-ai.webp",
+      alt: "Scientific Inquiry With AI portal home screen, with entry points for the full site and the retrieval practice tool.",
+    },
     featured: true,
     date: "2026-06",
     highlights: [
@@ -47,11 +55,16 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "project-in-progress",
-    title: "Project in Progress",
+    slug: "pre-workout-recipes",
+    title: "Pre-Workout Recipes",
     description:
-      "A new project is currently in development. More details will be shared soon.",
-    tech: ["Technologies to be announced"],
+      "A recipe browser for pre-workout mixtures, grouped by caffeine load, with search, ingredient filtering, and per-dose caffeine safety warnings.",
+    // TODO: fill in the tech stack for this project — the badge row is hidden while this is empty.
+    tech: [],
+    image: {
+      src: "/projects/pre-workout.webp",
+      alt: "Pre-Workout Recipes app showing search and ingredient filters above recipe cards grouped by caffeine load, each listing ingredients, caffeine totals, and mixing instructions.",
+    },
     comingSoon: true,
   },
 ];

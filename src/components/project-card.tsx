@@ -48,18 +48,20 @@ export function ProjectCard({ project }: { project: Project }) {
         />
       </div>
 
-      <div className="border-t border-border px-6 py-5 sm:px-8 lg:px-10">
-        <p className="mb-3 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-          Technologies &amp; skills
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {project.tech.map((technology) => (
-            <Badge key={technology} variant="outline">
-              {technology}
-            </Badge>
-          ))}
+      {project.tech.length > 0 && (
+        <div className="border-t border-border px-6 py-5 sm:px-8 lg:px-10">
+          <p className="mb-3 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+            Technologies &amp; skills
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {project.tech.map((technology) => (
+              <Badge key={technology} variant="outline">
+                {technology}
+              </Badge>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </article>
   );
 

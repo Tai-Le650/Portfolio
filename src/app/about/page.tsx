@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { EducationItem } from "@/components/education-item";
-import { PortraitPlaceholder } from "@/components/hero";
+import { Portrait } from "@/components/hero";
 import { PageIntro } from "@/components/page-intro";
 import { education } from "@/data/education";
 import { profile } from "@/data/profile";
@@ -28,7 +28,7 @@ export default function AboutPage() {
         aria-labelledby="about-story-heading"
       >
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(280px,0.72fr)_minmax(0,1.28fr)] lg:gap-16">
-          <PortraitPlaceholder className="mx-auto max-w-sm lg:mx-0" />
+          <Portrait className="mx-auto max-w-sm lg:mx-0" />
 
           <div>
             <p className="eyebrow">My story</p>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import { PageIntro } from "@/components/page-intro";
 import { profile } from "@/data/profile";
@@ -10,8 +10,6 @@ export const metadata: Metadata = createPageMetadata({
   description: `Contact ${profile.name} about software, AI, or product engineering.`,
   path: "/contact",
 });
-
-const displayPhone = "650 283 9427";
 
 const socialLinks = [
   {
@@ -34,7 +32,7 @@ export default function ContactPage() {
       <PageIntro
         eyebrow="Contact"
         title="Get in touch."
-        description="Use the form below or reach me directly by email or phone."
+        description="Use the form below, or reach me directly by email or on LinkedIn."
       />
 
       <section className="site-container grid gap-8 pb-20 sm:pb-24 lg:grid-cols-[0.72fr_1.28fr] lg:gap-10">
@@ -64,19 +62,6 @@ export default function ContactPage() {
                 <span className="min-w-0">
                   <span className="block text-xs font-semibold text-muted-foreground">Email</span>
                   <span className="mt-0.5 block truncate text-sm font-bold">{profile.email}</span>
-                </span>
-              </a>
-
-              <a
-                href="tel:6502839427"
-                className="focus-ring group flex min-h-14 items-center gap-4 border border-transparent p-2 transition-colors hover:border-border hover:bg-secondary/70"
-              >
-                <span className="grid size-10 shrink-0 place-items-center border border-border bg-secondary text-foreground">
-                  <Phone className="size-4" aria-hidden="true" />
-                </span>
-                <span>
-                  <span className="block text-xs font-semibold text-muted-foreground">Phone</span>
-                  <span className="mt-0.5 block text-sm font-bold">{displayPhone}</span>
                 </span>
               </a>
 
